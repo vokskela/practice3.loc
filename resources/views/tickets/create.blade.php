@@ -9,18 +9,21 @@
                 <div class="clearfix"></div>
             </div>
             <div class="card-body mt-2">
-                <form>
+                <form method="post">{{ csrf_field() }}
+                    @foreach ($errors->all() as $error)
+                        <p class="alert alert-danger">{{ $error }}</p>
+                    @endforeach
                     <fieldset>
                         <div class="form-group">
                             <label for="title" class="col-lg-12 control-label">Заголовок</label>
                             <div class="col-lg-12">
-                                <input type="text" class="form-control" id="title">
+                                <input type="text" class="form-control" id="title" name="title">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="content" class="col-lg-12 control-label">Сообщение</label>
                             <div class="col-lg-12">
-                                <textarea class="form-control" rows="3" id="content"></textarea>
+                                <textarea class="form-control" rows="3" id="content" name="content"></textarea>
                                 <span class="help-block">Задавайте любые вопросы</span>
                             </div>
                         </div>
