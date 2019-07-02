@@ -35,7 +35,8 @@
 
                         <div class="form-group">
                             <div class="col-lg-10 col-lg-offset-2">
-                                <button class="btn btn-default">Отмена</button>
+{{--                                <button class="btn btn-default">Отмена</button>--}}
+                                <a href="{{ url()->previous() }}" class="btn btn-default">Отмена</a>
                                 <button type="submit" class="btn btn-primary">Создать</button>
                             </div>
                         </div>

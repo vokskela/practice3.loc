@@ -5,7 +5,7 @@
     <div class="container col-md-8 col-md-offset-2 mt-5">
         <div class="card">
             <div class="card-header ">
-                <h5 class="float-left">Tickets</h5>
+                <h5 class="float-left">Список заявок</h5>
                 <div class="clearfix"></div>
             </div>
             <div class="card-body mt-2">
@@ -14,6 +14,8 @@
                         {{ session('status') }}
                     </div>
                 @endif
+                <a class="btn btn-info float-left mb-2" href="/tickets/create">Создать</a>
+                <div class="clearfix"></div>
                 @if ($tickets->isEmpty())
                     <p> Нет заявок.</p>
                 @else
