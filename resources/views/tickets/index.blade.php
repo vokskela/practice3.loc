@@ -9,6 +9,11 @@
                 <div class="clearfix"></div>
             </div>
             <div class="card-body mt-2">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 @if ($tickets->isEmpty())
                     <p> Нет заявок.</p>
                 @else

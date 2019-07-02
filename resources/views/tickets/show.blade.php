@@ -11,8 +11,14 @@
             <div class="card-body">
                 <p> <strong>Статус</strong>: {{ $ticket->status ? 'В ожидании' : 'Отвечено' }}</p>
                 <p> {{ $ticket->content }} </p>
-                <a href="#" class="btn btn-info">Изменить</a>
-                <a href="#" class="btn btn-info">Удалить</a>
+                <a href="{{ action('TicketsController@edit', $ticket->slug) }}" class="btn btn-info float-left mr-2">Изменить</a>
+                <form method="post" action="{{ action('TicketsController@destroy', $ticket->slug) }}" class="float-left">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div>
+                        <button type="submit" class="btn btn-warning">Удалить</button>
+                    </div>
+                </form>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
