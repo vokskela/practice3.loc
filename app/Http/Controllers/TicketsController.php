@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TicketFormRequest;
 use Illuminate\Http\Request;
+use App\Ticket;
 
 class TicketsController extends Controller
 {
@@ -14,7 +15,8 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        //
+        $tickets = Ticket::all();
+        return view('tickets.index', compact('tickets'));
     }
 
     /**
@@ -31,11 +33,18 @@ class TicketsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function store(TicketFormRequest $request)
     {
-        return $request->all();
+        $slug=uniqid();
+        $ticket=new Ticket(array(
+           'title' => $request->get('title'),
+           'content' => $request->get('content'),
+           'slug' => $slug
+        ));
+        $ticket->save();
+        return redirect('/tickets/create')->with('status','Ваша заявка создана успешно! Номер заявки: '.$slug);
     }
 
     /**
